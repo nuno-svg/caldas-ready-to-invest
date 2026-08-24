@@ -5,8 +5,8 @@ Plataforma de auscultação ao ecossistema económico para o Kit do Investidor d
 ## Plataforma pública
 
 - Página de enquadramento: <https://nuno-svg.github.io/caldas-ready-to-invest/>
-- Questionário: disponível através da página pública
-- Indicadores: disponíveis através da página pública
+- Questionário: <https://nuno-svg.github.io/caldas-ready-to-invest/questionario/>
+- Indicadores: <https://nuno-svg.github.io/caldas-ready-to-invest/resultados/>
 
 ## Objetivo
 

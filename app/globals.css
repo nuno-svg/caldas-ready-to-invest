@@ -13,6 +13,8 @@ main { min-height:100vh; overflow:hidden; }
 .brand b { font-size:14px; letter-spacing:.15em; }
 .brand small { font-size:9px; letter-spacing:.22em; margin-top:3px; }
 .top-meta { display:flex; align-items:center; gap:10px; font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
+.top-meta a { color:var(--green); font-weight:700; }
+.top-meta a + a { padding-left:10px; border-left:1px solid var(--line); }
 .top-meta > span:first-child { padding-right:18px; border-right:1px solid var(--line); }
 .live-dot { width:8px; height:8px; border-radius:50%; background:var(--coral); box-shadow:0 0 0 5px rgba(239,139,111,.18); }
 .hero { padding:8.4vw 5.5vw 5vw; position:relative; }

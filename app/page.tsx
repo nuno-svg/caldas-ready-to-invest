@@ -19,7 +19,7 @@ export default function Home() {
           <span className="brand-mark">CR</span>
           <span><b>CALDAS</b><small>READY TO INVEST</small></span>
         </a>
-        <div className="top-meta"><a href="/resultados">Indicadores</a><span>Kit do Investidor</span><span className="live-dot" />Auscultação ativa</div>
+        <div className="top-meta"><a href="/resultados">Indicadores</a><a href="https://espacos.caldasreadytoinvest.pt">Espaços</a><span>Kit do Investidor</span><span className="live-dot" />Auscultação ativa</div>
       </header>
 
       <section className="hero" id="inicio">

@@ -31,6 +31,7 @@ export default function Home() {
           <a href="#processo">Processo</a>
           <a href="/resultados">Resultados</a>
           <a href="https://espacos.caldasreadytoinvest.pt">Piloto Espaços</a>
+          <a href="/admin">Acesso reservado</a>
           <span className="phase-status"><i /> Fase de auscultação</span>
         </nav>
       </header>

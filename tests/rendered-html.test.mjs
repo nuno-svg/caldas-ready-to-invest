@@ -17,6 +17,7 @@ test("server-renders the Ready to Invest landing page", async () => {
   assert.match(html, /Antes de construir o Kit/i);
   assert.match(html, /Participar na auscultação/i);
   assert.match(html, /Piloto demonstrador/i);
+  assert.match(html, /Acesso reservado/i);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|Your site is taking shape/i);
 });
 

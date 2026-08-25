@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title description">
+  <title id="title">Símbolo Caldas Ready to Invest</title>
+  <desc id="description">Um percurso ascendente protegido por uma forma territorial, terminando num ponto de ação.</desc>
+  <path fill="#004238" d="M64 4C92 4 116 24 116 52c0 35-21 59-52 72C33 111 12 87 12 52 12 24 36 4 64 4Z"/>
+  <path fill="none" stroke="#F7F1E7" stroke-linecap="round" stroke-width="13" d="M41 105c0-17 38-16 38-34 0-16-28-15-28-29 0-10 11-15 27-17"/>
+  <path fill="#F59678" d="m40 95 10 10-10 10-10-10 10-10Z"/>
+  <path fill="#F59678" d="m88 10 3.7 10.3L102 24l-10.3 3.7L88 38l-3.7-10.3L74 24l10.3-3.7L88 10Z"/>
+  <path fill="#F59678" d="m22 76 6 6-6 6-6-6 6-6Zm84 0 6 6-6 6-6-6 6-6Z"/>
+</svg>

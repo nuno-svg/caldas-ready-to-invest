@@ -18,7 +18,7 @@ export default function DashboardClient() {
   const maxArchetype = Math.max(...data.archetypes.map((item) => item.total), 1);
   return (
     <section className="dashboard-body">
-      <div className="dashboard-title"><div><span className="section-kicker">LEITURA AGREGADA</span><h1>O que o ecossistema está a dizer.</h1></div><div className="updated">Atualização automática<small>{data.lastResponse ? new Date(data.lastResponse).toLocaleString("pt-PT") : "A aguardar a primeira resposta"}</small></div></div>
+      <div className="dashboard-title"><div><span className="section-kicker">RESULTADOS PRELIMINARES · LEITURA AGREGADA</span><h1>O que o ecossistema está a dizer.</h1></div><div className="updated">Atualização automática<small>{data.lastResponse ? new Date(data.lastResponse).toLocaleString("pt-PT") : "A aguardar a primeira resposta"}</small></div></div>
       <div className="metric-row"><article><span>Respostas válidas</span><strong>{data.total}</strong><small>repositório consolidado</small></article><article><span>Índice de preparação</span><strong>{data.total ? data.averageScore : "—"}<i>{data.total ? "/100" : ""}</i></strong><small>média das cinco dimensões</small></article><article><span>Perfis representados</span><strong>{data.archetypes.filter((item) => item.total > 0).length}<i>/6</i></strong><small>diversidade da amostra</small></article></div>
       {data.total === 0 ? <div className="empty-state"><b>O painel está pronto para receber contributos.</b><p>Os indicadores, temas e comparações surgirão automaticamente após a primeira submissão.</p><a className="primary" href="/questionario">Registar primeira resposta <span>→</span></a></div> : <>
         <div className="dashboard-grid">
@@ -27,7 +27,7 @@ export default function DashboardClient() {
           <article className="dashboard-card"><div className="card-head"><div><span>TEMAS RECORRENTES</span><h2>Sinais nas respostas</h2></div></div><div className="theme-list">{data.themes.length ? data.themes.map((item, index) => <div key={item.theme}><span>{String(index + 1).padStart(2, "0")}</span><b>{item.theme}</b><em style={{ width: `${(item.count / maxTheme) * 100}%` }} /></div>) : <p>Os primeiros temas surgirão à medida que forem recebidas respostas abertas.</p>}</div></article>
         </div>
       </>}
-      <p className="dashboard-footnote">Resultados indicativos e agregados. A interpretação técnica deve considerar dimensão, diversidade e composição da amostra.</p>
+      <p className="dashboard-footnote">Resultados indicativos e agregados. Não correspondem a uma posição municipal validada. A interpretação técnica deve considerar dimensão, diversidade e composição da amostra.</p>
     </section>
   );
 }

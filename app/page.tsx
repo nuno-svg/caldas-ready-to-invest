@@ -6,9 +6,17 @@ const dimensions = [
   ["05", "Sinal", "Que compromisso tornaria Caldas mais convincente?"],
 ];
 
+const stages = [
+  ["01", "Diagnóstico", "Base de trabalho", "done"],
+  ["02", "Auscultação", "Fase em curso", "current"],
+  ["03", "Validação municipal", "Próximo passo", "future"],
+  ["04", "Desenho do Kit", "Fase futura", "future"],
+  ["05", "Implementação", "Fase futura", "future"],
+];
+
 export const metadata = {
   title: "Caldas Ready to Invest",
-  description: "Auscultação ao ecossistema económico das Caldas da Rainha.",
+  description: "Diagnóstico e auscultação para a futura implementação do Kit do Investidor das Caldas da Rainha.",
 };
 
 export default function Home() {
@@ -16,21 +24,44 @@ export default function Home() {
     <main>
       <header className="topbar">
         <a className="brand" href="#inicio" aria-label="Caldas Ready to Invest">
-          <span className="brand-mark">CR</span>
+          <span className="brand-mark logo-mark" aria-hidden="true" />
           <span><b>CALDAS</b><small>READY TO INVEST</small></span>
         </a>
-        <div className="top-meta"><a href="/resultados">Indicadores</a><a href="https://espacos.caldasreadytoinvest.pt">Espaços</a><span>Kit do Investidor</span><span className="live-dot" />Auscultação ativa</div>
+        <nav className="top-meta" aria-label="Navegação principal">
+          <a href="#processo">Processo</a>
+          <a href="/resultados">Resultados</a>
+          <a href="https://espacos.caldasreadytoinvest.pt">Piloto Espaços</a>
+          <span className="phase-status"><i /> Fase de auscultação</span>
+        </nav>
       </header>
 
       <section className="hero" id="inicio">
-        <div className="eyebrow">INTELIGÊNCIA TERRITORIAL · 2026</div>
-        <h1>A experiência de quem investe<br />ajuda a cidade a <em>decidir melhor.</em></h1>
-        <p className="hero-copy">Um questionário dirigido a empresas e instituições para identificar obstáculos, prioridades e sinais concretos que tornem as Caldas da Rainha mais preparadas para receber investimento.</p>
+        <div className="eyebrow">FASE 01 · DIAGNÓSTICO E AUSCULTAÇÃO · 2026</div>
+        <h1>Antes de construir o Kit,<br /><em>ouvimos quem investe.</em></h1>
+        <p className="hero-copy">Esta plataforma é uma etapa preparatória do futuro Kit do Investidor das Caldas da Rainha. Recolhe experiência real, identifica obstáculos e ajuda a definir prioridades antes do desenho e da implementação do projeto.</p>
         <div className="hero-actions">
-          <a className="primary" href="/questionario">Responder ao questionário <span>→</span></a>
+          <a className="primary" href="/questionario">Participar na auscultação <span>→</span></a>
           <span className="duration"><b>10–12 min.</b><small>Respostas tratadas de forma agregada</small></span>
         </div>
-        <div className="hero-rule"><span>05 dimensões</span><span>06 perfis de organização</span><span>01 diagnóstico comum</span></div>
+        <div className="hero-rule"><span>05 dimensões</span><span>06 perfis de organização</span><span>01 diagnóstico partilhado</span></div>
+      </section>
+
+      <section className="process" id="processo">
+        <div className="process-intro">
+          <span className="section-kicker">PERCURSO DO PROJETO</span>
+          <h2>Decidir com evidência.<br />Implementar com confiança.</h2>
+          <p>O questionário não é o Kit do Investidor. É o instrumento de auscultação que antecede a validação municipal, o desenho da solução e a sua futura implementação.</p>
+        </div>
+        <div className="timeline">
+          {stages.map(([n, title, status, state]) => (
+            <article className={state} key={n}>
+              <span>{n}</span>
+              <div><h3>{title}</h3><p>{status}</p></div>
+              <i aria-hidden="true" />
+            </article>
+          ))}
+        </div>
+        <p className="process-note"><b>Estado atual</b> — diagnóstico em consolidação e auscultação ao ecossistema económico.</p>
       </section>
 
       <section className="framework" id="questionario">
@@ -48,12 +79,26 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="start-card">
-        <div><span className="section-kicker light">QUESTIONÁRIO ADAPTATIVO</span><h2>Começamos pelo seu perfil.</h2><p>A sequência de perguntas será ajustada à realidade da sua organização.</p></div>
-        <a className="start-cta" href="/questionario">Iniciar resposta <span>→</span></a>
+      <section className="pilot-card">
+        <div className="pilot-copy">
+          <span className="section-kicker light">PILOTO DEMONSTRADOR</span>
+          <h2>CaldasEspaços testa uma capacidade futura.</h2>
+          <p>Um protótipo com oferta imobiliária real que demonstra como o futuro Kit poderá organizar informação territorial útil para investidores. Não corresponde ainda a uma funcionalidade municipal implementada.</p>
+          <a href="https://espacos.caldasreadytoinvest.pt">Explorar o piloto <span>→</span></a>
+        </div>
+        <div className="pilot-metrics" aria-label="Indicadores do piloto">
+          <span><b>51</b><small>ofertas verificadas</small></span>
+          <span><b>03</b><small>tipologias principais</small></span>
+          <span><b>04</b><small>fontes identificadas</small></span>
+        </div>
       </section>
 
-      <footer><span>Município das Caldas da Rainha</span><span>Kit do Investidor · Auscultação ao ecossistema económico</span></footer>
+      <section className="start-card">
+        <div><span className="section-kicker light">AUSCULTAÇÃO EM CURSO</span><h2>A sua experiência conta.</h2><p>Começamos pelo perfil da organização e adaptamos as perguntas à sua realidade.</p></div>
+        <a className="start-cta" href="/questionario">Iniciar participação <span>→</span></a>
+      </section>
+
+      <footer><span>Caldas Ready to Invest · Projeto em preparação</span><span>Diagnóstico e auscultação para o futuro Kit do Investidor</span></footer>
     </main>
   );
 }

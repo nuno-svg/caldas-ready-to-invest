@@ -4,9 +4,11 @@ Plataforma de auscultação ao ecossistema económico para o Kit do Investidor d
 
 ## Plataforma pública
 
-- Página de enquadramento: <https://nuno-svg.github.io/caldas-ready-to-invest/>
-- Questionário: <https://nuno-svg.github.io/caldas-ready-to-invest/questionario/>
-- Indicadores: <https://nuno-svg.github.io/caldas-ready-to-invest/resultados/>
+- Domínio oficial: <https://caldasreadytoinvest.pt/>
+- Questionário: <https://caldasreadytoinvest.pt/questionario/>
+- Indicadores: <https://caldasreadytoinvest.pt/resultados/>
+
+O endereço GitHub Pages mantém-se temporariamente como ponto de encaminhamento durante a transição do domínio.
 
 ## Objetivo
 
@@ -27,4 +29,13 @@ npm install
 npm run dev
 ```
 
-Atualizado em 24 de agosto de 2026.
+## Publicação autónoma
+
+A aplicação e a base de dados D1 são publicadas na conta Cloudflare do projeto:
+
+```bash
+npm run db:migrate:remote
+npm run deploy
+```
+
+Atualizado em 25 de agosto de 2026.

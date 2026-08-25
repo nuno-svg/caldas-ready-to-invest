@@ -4,6 +4,8 @@
   "account_id": "f794f22f06232c1e70b2f011ba286a94",
   "compatibility_date": "2026-08-25",
   "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "preview_urls": false,
   "main": "./worker/index.ts",
   "assets": {
     "directory": "dist/client",

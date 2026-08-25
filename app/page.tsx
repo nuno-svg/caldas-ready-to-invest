@@ -98,7 +98,7 @@ export default function Home() {
         <a className="start-cta" href="/questionario">Iniciar participação <span>→</span></a>
       </section>
 
-      <footer><span>Caldas Ready to Invest · Projeto em preparação</span><span>Diagnóstico e auscultação para o futuro Kit do Investidor</span></footer>
+      <footer><span>Caldas Ready to Invest · Projeto em preparação</span><span>Diagnóstico e auscultação para o futuro Kit do Investidor</span><a href="/admin">Área reservada</a></footer>
     </main>
   );
 }

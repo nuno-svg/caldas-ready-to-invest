@@ -2,11 +2,11 @@ import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
-async function render(path = "/", extraHeaders = {}) {
+async function render(path = "/", extraHeaders = {}, extraEnv = {}) {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
-  return worker.fetch(new Request(`http://localhost${path}`, { headers: { accept: "text/html", ...extraHeaders } }), { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } }, { waitUntil() {}, passThroughOnException() {} });
+  return worker.fetch(new Request(`http://localhost${path}`, { headers: { accept: "text/html", ...extraHeaders } }), { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) }, ...extraEnv }, { waitUntil() {}, passThroughOnException() {} });
 }
 
 test("server-renders the Ready to Invest landing page", async () => {
@@ -51,16 +51,21 @@ test("contains a protected response repository and CSV export", async () => {
   assert.match(adminClient, /credentials: "same-origin"/);
   assert.match(adminApi, /getAdminIdentity/);
   assert.match(exportApi, /Content-Disposition/);
-  assert.match(auth, /cf-access-authenticated-user-email/);
   assert.match(auth, /cf-access-jwt-assertion/);
+  assert.match(auth, /crypto\.subtle\.verify/);
+  assert.match(auth, /CF_ACCESS_AUD/);
+  assert.doesNotMatch(auth, /x-forwarded-host|hostname === "localhost"/);
   assert.doesNotMatch(auth, /nlaboreiro@mac\.com|miguel\.trindade\.silvestre@gmail\.com/);
 });
 
-test("server-renders the reserved dashboard in local development", async () => {
-  const response = await render("/admin", { "cf-access-authenticated-user-email": "admin@example.test", "cf-access-jwt-assertion": "verified-test-assertion" });
-  assert.equal(response.status, 200);
-  const html = await response.text();
-  assert.match(html, /Área reservada/i);
-  assert.match(html, /Auscultação em detalhe/i);
-  assert.match(html, /Exportar CSV/i);
+test("rejects forged Cloudflare Access headers and spoofed localhost", async () => {
+  const forged = await render("/admin", { "cf-access-authenticated-user-email": "admin@example.test", "cf-access-jwt-assertion": "verified-test-assertion" });
+  const forgedHtml = await forged.text();
+  assert.match(forgedHtml, /Acesso não autorizado/i);
+  assert.doesNotMatch(forgedHtml, /Exportar CSV/i);
+
+  const spoofed = await render("/admin", { "x-forwarded-host": "localhost", host: "localhost" });
+  const spoofedHtml = await spoofed.text();
+  assert.match(spoofedHtml, /Acesso não autorizado/i);
+  assert.doesNotMatch(spoofedHtml, /Exportar CSV/i);
 });

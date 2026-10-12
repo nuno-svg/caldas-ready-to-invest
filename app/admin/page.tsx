@@ -7,7 +7,7 @@ export const metadata = { title: "Área reservada | Caldas Ready to Invest" };
 export const dynamic = "force-dynamic";
 
 export default async function AdminPage() {
-  const identity = getAdminIdentity(await headers());
+  const identity = await getAdminIdentity(await headers());
   if (!identity) {
     return (
       <main className="admin-denied">

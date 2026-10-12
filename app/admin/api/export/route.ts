@@ -2,7 +2,7 @@ import { getAdminIdentity } from "../../../../lib/admin-auth";
 import { listAdminSubmissions, submissionsToCsv } from "../../../../lib/admin-data";
 
 export async function GET(request: Request) {
-  const identity = getAdminIdentity(request.headers);
+  const identity = await getAdminIdentity(request.headers);
   if (!identity) return new Response("Acesso reservado.", { status: 401, headers: { "Cache-Control": "no-store" } });
   try {
     const csv = submissionsToCsv(await listAdminSubmissions());

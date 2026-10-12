@@ -39,3 +39,21 @@ npm run deploy
 ```
 
 Atualizado em 25 de agosto de 2026.
+
+## Área reservada (`/admin`) — configuração obrigatória
+
+O acesso à área reservada é verificado com o token JWT do Cloudflare Access (assinatura, audiência, emissor e validade). Sem esta configuração, o acesso é sempre recusado.
+
+1. No Cloudflare Zero Trust, criar uma aplicação Access para `caldasreadytoinvest.pt/admin*` com a política de emails autorizados.
+2. Copiar o *team domain* (ex.: `equipa.cloudflareaccess.com`) e a *Application Audience (AUD) Tag* da aplicação.
+3. Definir as variáveis no Worker:
+
+```bash
+npx wrangler secret put CF_ACCESS_TEAM_DOMAIN
+npx wrangler secret put CF_ACCESS_AUD
+npx wrangler secret put ADMIN_EMAILS   # opcional: emails autorizados, separados por vírgulas
+```
+
+Em desenvolvimento local, definir `ADMIN_DEV_BYPASS=true` em `.dev.vars` (nunca em produção).
+
+O URL `*.workers.dev` está desativado (`workers_dev: false`) para que a aplicação só seja acessível pelo domínio protegido pelo Access.
